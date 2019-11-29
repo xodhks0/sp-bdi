@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<bean id="bds" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+		<property name="username" value="bdi"/>
+		<property name="password" value="12345678"/>
+		<property name="defaultAutoCommit" value="false"></property>
+	</bean>
+	<bean id="ssfb" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="bds"></property><!-- simple String이 아니기 때문에 ref를 사용해 직접 집어넣어준다 -->
+		<property name="configLocation" value="classpath:/mybatis/mybatis-config.xml"></property><!-- classpath:/를 넣어주면 classpath부터 찾는다 -->
+	</bean>
+	
+</beans>
