@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<bean id="cpu1" class="java.lang.String"><!-- String 클래스를 만들수없기때문에 annotation을 사용할 수 없다 -->
+		<constructor-arg value="i5"></constructor-arg><!-- String cpu = new String("i5"); 이렇게 한것 -->
+	</bean>
+	<bean id="ram1" class="java.lang.String">
+		<constructor-arg value="16G"></constructor-arg>
+	</bean>
+	<bean id="hdd" class="java.lang.String">
+		<constructor-arg value="500G"></constructor-arg>
+	</bean>
+	<context:component-scan base-package="com.sp.bdi.test.test4"></context:component-scan>
+<!-- 	<bean id="computer" class="com.sp.bdi.test.test4.Computer">
+		<property name="cpu">
+		<ref bean="cpu"></ref>6번 라인의 cpu 즉 String cpu = new String("i5"); 의 cpu를 c.setCpu(cpu)를 집어넣은것
+			<value>i5</value> c.setCpu("i5"); 이렇게 한것
+		</property>아무거나 이렇게 쓸수 있는건 아니다 
+		<property name="ram">
+			<value>SAMSUNG EVO 16G</value>
+		</property>
+	</bean> -->
+
+</beans>
